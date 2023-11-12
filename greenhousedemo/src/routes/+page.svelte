@@ -9,8 +9,8 @@
   </style>
 
   <ul>
-    {#each data.Warehouse as country}
-      <li>{country.name}</li>
+    {#each data.Warehouse as warehouse}
+      <li>{warehouse.name}</li>
     {/each}
   </ul>
 
