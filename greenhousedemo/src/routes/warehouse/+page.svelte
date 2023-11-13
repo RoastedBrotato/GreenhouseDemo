@@ -1,6 +1,5 @@
 <script>
   import { goto } from "$app/navigation";
-
   import { supabase } from "$lib/supabaseClient";
   import Warehouse from "$lib/Warehouse.svelte";
   import { onMount } from "svelte";
@@ -77,7 +76,7 @@
         <div class="mb-4">
           <label
             class="block text-gray-700 text-sm font-bold mb-2"
-            for="username"
+            for="newName"
           >
             Warehouse Name
           </label>
@@ -92,7 +91,7 @@
         <div class="mb-6">
           <label
             class="block text-gray-700 text-sm font-bold mb-2"
-            for="password"
+            for="newAddress"
           >
             Warehouse Address
           </label>

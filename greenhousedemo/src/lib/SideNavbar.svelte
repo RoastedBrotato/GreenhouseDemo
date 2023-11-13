@@ -3,6 +3,6 @@
     <ul>
     <li><a href="/">Home</a></li>
       <li><a href="/warehouse">Warehouse</a></li>
-      <li><a href="#">Link 2</a></li>
+      <li><a href="/items">Items</a></li>
     </ul>
   </div>
