@@ -58,6 +58,16 @@
         />
     </td>
     <td class="whitespace-nowrap px-6 py-4">
+        <input
+            class="border"
+            type="text"
+            value={item.quantity}
+            on:input={(e) => {
+                item.quantity = e.currentTarget.value;
+            }}
+        />
+    </td>
+    <td class="whitespace-nowrap px-6 py-4">
         <p>{warehouseName}</p>
     </td>
 

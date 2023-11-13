@@ -9,6 +9,7 @@
     let newName = "";
     let newCost = "";
     let newShelfLocation = "";
+    let newQuantity = "";
     let warehouseLocation = "";
 
     onMount(async () => {
@@ -38,7 +39,7 @@
     try {
       const { data, error } = await supabase
         .from("Items")
-        .insert([{ name: newName, cost_per_unit: newCost, shelf_location: newShelfLocation, warehouse_id: warehouseLocation }]);
+        .insert([{ name: newName, cost_per_unit: newCost, shelf_location: newShelfLocation, warehouse_id: warehouseLocation, quantity: newQuantity }]);
       await getAllItems();
       newName = "";
       newCost = "";
@@ -53,7 +54,7 @@
     try {
       const { data, error } = await supabase
         .from("Items")
-        .update({ name: item.name, address: item.address, shelf_location: item.shelf_location, warehouse_id: item.warehouse_id })
+        .update({ name: item.name, address: item.address, shelf_location: item.shelf_location, warehouse_id: item.warehouse_id, quantity: item.quantity })
         .eq("id", item.id);
       await getAllItems();
     } catch (err) {
@@ -127,6 +128,22 @@
               bind:value={newShelfLocation}
             />
           </div>
+          <div class="mb-6">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="newQuantity"
+            >
+              Quantity
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              id="newQuantity"
+              type="number"
+              placeholder="Shelf Location"
+              bind:value={newQuantity}
+            />
+          </div>
+
 
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="newWarehouseID">
@@ -170,6 +187,7 @@
                   <th scope="col" class="px-6 py-4">Name</th>
                   <th scope="col" class="px-6 py-4">Cost per Unit</th>
                   <th scope="col" class="px-6 py-4">Shelf Location</th>
+                  <th scope="col" class="px-6 py-4">Quantity</th>
                   <th scope="col" class="px-6 py-4">Warehouse</th>
                   <th scope="col" class="px-6 py-4">Edit</th>
                   <th scope="col" class="px-6 py-4">Delete</th>
