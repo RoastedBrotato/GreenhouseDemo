@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .full-bleed {
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100%;
+    scroll-padding-top: 90px;
+    background-color: white;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Safari issues with fixed elements scrolling, turn this on using JavaScript */
+body[data-noscroll="true"] {
+    touch-action: none;
+    -ms-touch-action: none;
+}
