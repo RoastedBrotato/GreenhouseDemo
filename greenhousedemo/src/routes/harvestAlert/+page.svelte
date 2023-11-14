@@ -9,10 +9,14 @@
     let newDate = "";
     let newTypeofPlant = "";
     let greenhouseLocation = "";
+    let pendingDueDates = 0;
+
 
     onMount(async () => {
       await getAllHarvestAlerts();
       await getAllGreenhouses();
+      await updatePendingDueDates();
+      await checkForDueDateNotification();
     });
 
     const getAllGreenhouses = async () => {
@@ -39,6 +43,8 @@
         .from("HarvestAlerts")
         .insert([{ alert_date: newDate, plants_to_harvest: newTypeofPlant, greenhouse_id: greenhouseLocation}]);
       await getAllHarvestAlerts();
+      await updatePendingDueDates();
+      await checkForDueDateNotification();
       newDate = "";
       newTypeofPlant = "";
       greenhouseLocation = "";
@@ -69,11 +75,39 @@
       console.log(err);
     }
   };
+
+  function updatePendingDueDates() {
+    const today = new Date();
+    pendingDueDates = harvestAlerts.filter(alert => new Date(alert.alert_date) <= today).length;
+  }
+
+  function getTodayFormatted() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  function checkForDueDateNotification() {
+    // You can customize this logic based on your notification requirements
+    if (pendingDueDates > 0) {
+      alert(`You have ${pendingDueDates} pending due dates today!`);
+    }
+  }
+ 
   </script>
   
   <div class="px-10 m-auto max-w-7xl mt-10">
     <div>
       <h1 class="text-2xl mb-2 font-bold">Harvest Alerts</h1>
+    </div>
+
+    <div class="w-full max-w-xs">
+        <h1 class="text-md font-bold">Pending Harvest</h1>
+        <p>
+            You have {pendingDueDates} pending due dates today!
+        </p>
     </div>
   
     <div class="mb-3">
