@@ -80,15 +80,6 @@
     const today = new Date();
     pendingDueDates = harvestAlerts.filter(alert => new Date(alert.alert_date) <= today).length;
   }
-
-  function getTodayFormatted() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = (today.getMonth() + 1).toString().padStart(2, '0');
-    const day = today.getDate().toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
-
   function checkForDueDateNotification() {
     // You can customize this logic based on your notification requirements
     if (pendingDueDates > 0) {
