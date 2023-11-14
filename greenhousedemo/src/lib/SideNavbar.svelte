@@ -4,6 +4,7 @@
     <li><a href="/">Home</a></li>
       <li><a href="/warehouse">Warehouse</a></li>
       <li><a href="/items">Items</a></li>
+      <li><a href="/greenhouse">Greenhouses</a></li>
       <li><a href="/harvestAlert">Harvest Alert</a></li>
     </ul>
   </div>
