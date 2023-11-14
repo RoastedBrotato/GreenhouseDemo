@@ -6,5 +6,6 @@
       <li><a href="/items">Items</a></li>
       <li><a href="/greenhouse">Greenhouses</a></li>
       <li><a href="/harvestAlert">Harvest Alert</a></li>
+      <li><a href="/inventoryTransactions">Inventory Transaction</a></li>
     </ul>
   </div>
